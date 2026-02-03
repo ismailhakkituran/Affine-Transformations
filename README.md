@@ -42,7 +42,7 @@ ruby /home/ismylhakki/Documents/Computer-Graphics/main.rb --html --open
 
 Ruby, `affine_view.html` dosyasını üretmektedir. Üretilmiş bir html dosyasını online görüntülemek için aşağıdaki linki kullanabilirsiniz:
 
-[Online görüntüleme için tıklayınız](URL_BURAYA_EKLENECEK)
+[Online görüntüleme için tıklayınız](https://ismailhakkituran.github.io/Affine-Transformations/affine_view.html)
 
 ## Neler Gösterilir?
 
