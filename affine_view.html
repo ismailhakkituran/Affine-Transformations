@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <title>Affine Transformations</title>
+  <style>
+    body { margin: 0; background: #111111; color: #fff; font-family: Arial, sans-serif; }
+    .wrapper { max-width: 1200px; margin: 20px auto 40px; padding: 0 16px; }
+    .row { display: flex; align-items: center; gap: 16px; margin: 16px 0; }
+    .cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .caption { font-size: 12px; color: #bbbbbb; }
+    .label { flex: 0 0 260px; text-align: center; font-size: 14px; }
+    svg { display: block; background: #111111; border: 1px solid #222; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-0" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-0)" />
+
+  <g>
+  <polygon points="97.92140843718924,127.21649484536081, 153.59151152997276,127.21649484536081, 135.0348104990449,90.10309278350513, 97.92140843718924,71.5463917525773," fill="none" stroke="#aaaaaa" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,71.5463917525773" cy="" r="4" fill="#aaaaaa" />
+</g>
+
+</svg>
+
+  </div>
+  <div class="label">Öteleme (dx=2, dy=-1)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-0" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-0)" />
+
+  <g>
+  <polygon id="poly-0" data-from='[[97.92140843718924,127.21649484536081],[153.59151152997276,127.21649484536081],[135.0348104990449,90.10309278350513],[97.92140843718924,71.5463917525773]]' data-to='[[135.0348104990449,145.77319587628864],[190.70491359182842,145.77319587628864],[172.1482125609006,108.65979381443299],[135.0348104990449,90.10309278350513]]' points="135.0348104990449,145.77319587628864, 190.70491359182842,145.77319587628864, 172.1482125609006,108.65979381443299, 135.0348104990449,90.10309278350513," fill="none" stroke="red" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="135.0348104990449,145.77319587628864" cy="" r="4" fill="red" />
+<circle class="vertex" data-idx="1" cx="190.70491359182842,145.77319587628864" cy="" r="4" fill="red" />
+<circle class="vertex" data-idx="2" cx="172.1482125609006,108.65979381443299" cy="" r="4" fill="red" />
+<circle class="vertex" data-idx="3" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="red" />
+</g>
+
+</svg>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-1" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-1)" />
+
+  <g>
+  <polygon points="97.92140843718924,127.21649484536081, 153.59151152997276,127.21649484536081, 135.0348104990449,90.10309278350513, 97.92140843718924,71.5463917525773," fill="none" stroke="#aaaaaa" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,71.5463917525773" cy="" r="4" fill="#aaaaaa" />
+</g>
+
+</svg>
+
+  </div>
+  <div class="label">Ölçekleme (s=1.5)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-1" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-1)" />
+
+  <g>
+  <polygon id="poly-1" data-from='[[97.92140843718924,127.21649484536081],[153.59151152997276,127.21649484536081],[135.0348104990449,90.10309278350513],[97.92140843718924,71.5463917525773]]' data-to='[[86.32347029285935,138.81443298969072],[169.82862493203461,138.81443298969072],[141.99357338564283,83.14432989690721],[86.32347029285935,55.309278350515456]]' points="86.32347029285935,138.81443298969072, 169.82862493203461,138.81443298969072, 141.99357338564283,83.14432989690721, 86.32347029285935,55.309278350515456," fill="none" stroke="green" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="86.32347029285935,138.81443298969072" cy="" r="4" fill="green" />
+<circle class="vertex" data-idx="1" cx="169.82862493203461,138.81443298969072" cy="" r="4" fill="green" />
+<circle class="vertex" data-idx="2" cx="141.99357338564283,83.14432989690721" cy="" r="4" fill="green" />
+<circle class="vertex" data-idx="3" cx="86.32347029285935,55.309278350515456" cy="" r="4" fill="green" />
+</g>
+
+</svg>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-2" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-2)" />
+
+  <g>
+  <polygon points="97.92140843718924,127.21649484536081, 153.59151152997276,127.21649484536081, 135.0348104990449,90.10309278350513, 97.92140843718924,71.5463917525773," fill="none" stroke="#aaaaaa" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,71.5463917525773" cy="" r="4" fill="#aaaaaa" />
+</g>
+
+</svg>
+
+  </div>
+  <div class="label">Dönme (45°)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-2" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-2)" />
+
+  <g>
+  <polygon id="poly-2" data-from='[[97.92140843718924,127.21649484536081],[153.59151152997276,127.21649484536081],[135.0348104990449,90.10309278350513],[97.92140843718924,71.5463917525773]]' data-to='[[79.3647074062614,119.53005760544772],[118.72941481252283,80.16535019918629],[79.36470740626142,67.0437810637658],[40.0,80.16535019918629]]' points="79.3647074062614,119.53005760544772, 118.72941481252283,80.16535019918629, 79.36470740626142,67.0437810637658, 40.0,80.16535019918629," fill="none" stroke="yellow" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="79.3647074062614,119.53005760544772" cy="" r="4" fill="yellow" />
+<circle class="vertex" data-idx="1" cx="118.72941481252283,80.16535019918629" cy="" r="4" fill="yellow" />
+<circle class="vertex" data-idx="2" cx="79.36470740626142,67.0437810637658" cy="" r="4" fill="yellow" />
+<circle class="vertex" data-idx="3" cx="40.0,80.16535019918629" cy="" r="4" fill="yellow" />
+</g>
+
+</svg>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-3" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-3)" />
+
+  <g>
+  <polygon points="97.92140843718924,127.21649484536081, 153.59151152997276,127.21649484536081, 135.0348104990449,90.10309278350513, 97.92140843718924,71.5463917525773," fill="none" stroke="#aaaaaa" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,71.5463917525773" cy="" r="4" fill="#aaaaaa" />
+</g>
+
+</svg>
+
+  </div>
+  <div class="label">Eğme (shx=0.5, shy=0.0)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-3" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-3)" />
+
+  <g>
+  <polygon id="poly-3" data-from='[[97.92140843718924,127.21649484536081],[153.59151152997276,127.21649484536081],[135.0348104990449,90.10309278350513],[97.92140843718924,71.5463917525773]]' data-to='[[107.19975895265317,127.21649484536081],[162.86986204543666,127.21649484536081],[162.86986204543666,90.10309278350513],[135.0348104990449,71.5463917525773]]' points="107.19975895265317,127.21649484536081, 162.86986204543666,127.21649484536081, 162.86986204543666,90.10309278350513, 135.0348104990449,71.5463917525773," fill="none" stroke="blue" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="107.19975895265317,127.21649484536081" cy="" r="4" fill="blue" />
+<circle class="vertex" data-idx="1" cx="162.86986204543666,127.21649484536081" cy="" r="4" fill="blue" />
+<circle class="vertex" data-idx="2" cx="162.86986204543666,90.10309278350513" cy="" r="4" fill="blue" />
+<circle class="vertex" data-idx="3" cx="135.0348104990449,71.5463917525773" cy="" r="4" fill="blue" />
+</g>
+
+</svg>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-4" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-4)" />
+
+  <g>
+  <polygon points="97.92140843718924,127.21649484536081, 153.59151152997276,127.21649484536081, 135.0348104990449,90.10309278350513, 97.92140843718924,71.5463917525773," fill="none" stroke="#aaaaaa" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,71.5463917525773" cy="" r="4" fill="#aaaaaa" />
+</g>
+
+</svg>
+
+  </div>
+  <div class="label">Yansıma (x ekseni)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-4" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-4)" />
+
+  <g>
+  <polygon id="poly-4" data-from='[[97.92140843718924,127.21649484536081],[153.59151152997276,127.21649484536081],[135.0348104990449,90.10309278350513],[97.92140843718924,71.5463917525773]]' data-to='[[97.92140843718924,164.3298969072165],[153.59151152997276,164.3298969072165],[135.0348104990449,201.44329896907215],[97.92140843718924,220.0]]' points="97.92140843718924,164.3298969072165, 153.59151152997276,164.3298969072165, 135.0348104990449,201.44329896907215, 97.92140843718924,220.0," fill="none" stroke="yellow" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,164.3298969072165" cy="" r="4" fill="yellow" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,164.3298969072165" cy="" r="4" fill="yellow" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,201.44329896907215" cy="" r="4" fill="yellow" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,220.0" cy="" r="4" fill="yellow" />
+</g>
+
+</svg>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-5" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-5)" />
+
+  <g>
+  <polygon points="97.92140843718924,127.21649484536081, 153.59151152997276,127.21649484536081, 135.0348104990449,90.10309278350513, 97.92140843718924,71.5463917525773," fill="none" stroke="#aaaaaa" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="97.92140843718924,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="1" cx="153.59151152997276,127.21649484536081" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="2" cx="135.0348104990449,90.10309278350513" cy="" r="4" fill="#aaaaaa" />
+<circle class="vertex" data-idx="3" cx="97.92140843718924,71.5463917525773" cy="" r="4" fill="#aaaaaa" />
+</g>
+
+</svg>
+
+  </div>
+  <div class="label">Genel Afin (a=1, b=0.2, c=-0.3, d=1, tx=1, ty=2)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş Poligon</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+  <pattern id="grid-5" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-5)" />
+
+  <g>
+  <polygon id="poly-5" data-from='[[97.92140843718924,127.21649484536081],[153.59151152997276,127.21649484536081],[135.0348104990449,90.10309278350513],[97.92140843718924,71.5463917525773]]' data-to='[[120.18944967430267,95.6701030927835],[175.85955276708617,112.37113402061857],[164.72553214852945,69.69072164948452],[131.32347029285935,40.0]]' points="120.18944967430267,95.6701030927835, 175.85955276708617,112.37113402061857, 164.72553214852945,69.69072164948452, 131.32347029285935,40.0," fill="none" stroke="orange" stroke-width="2" />
+  <circle class="vertex" data-idx="0" cx="120.18944967430267,95.6701030927835" cy="" r="4" fill="orange" />
+<circle class="vertex" data-idx="1" cx="175.85955276708617,112.37113402061857" cy="" r="4" fill="orange" />
+<circle class="vertex" data-idx="2" cx="164.72553214852945,69.69072164948452" cy="" r="4" fill="orange" />
+<circle class="vertex" data-idx="3" cx="131.32347029285935,40.0" cy="" r="4" fill="orange" />
+</g>
+
+</svg>
+
+  </div>
+</div>
+
+    <div class="row">
+  <div class="cell">
+    <div class="caption">Orijinal Tangent / Normal</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+  <pattern id="grid-normal" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-normal)" />
+
+      <line x1="67.55102040816327" y1="220.0" x2="150.20408163265307" y2="192.44897959183675" stroke="#00aaff" stroke-width="2" />
+<text x="154.20408163265307" y="188.44897959183675" fill="#00aaff" font-size="12">t</text>
+
+      <line x1="67.55102040816327" y1="220.0" x2="40.0" y2="137.3469387755102" stroke="#aaaaaa" stroke-width="2" />
+<text x="44.0" y="133.3469387755102" fill="#aaaaaa" font-size="12">n</text>
+
+    </svg>
+  </div>
+  <div class="label">Normal Dönüşümü (yanlış vs doğru)</div>
+  <div class="cell">
+    <div class="caption">Dönüşmüş (t, n)</div>
+    <svg viewBox="0 0 320 260" width="320" height="260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+  <pattern id="grid-normal" width="18.556701030927837" height="18.556701030927837" patternUnits="userSpaceOnUse">
+    <path d="M 18.556701030927837 0 L 0 0 0 18.556701030927837" fill="none" stroke="#333333" stroke-width="1" />
+  </pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid-normal)" />
+
+      <line x1="67.55102040816327" y1="220.0" x2="202.55102040816328" y2="206.22448979591837" stroke="#00aaff" stroke-width="2" data-from='[150.20408163265307,192.44897959183675]' data-to='[202.55102040816328,206.22448979591837]' />
+<text x="206.55102040816328" y="202.22448979591837" fill="#00aaff" font-size="12">M·t</text>
+
+      <line x1="67.55102040816327" y1="220.0" x2="59.28571428571429" y2="178.67346938775512" stroke="#ff5555" stroke-width="2" data-from='[40.0,137.3469387755102]' data-to='[59.28571428571429,178.67346938775512]' />
+<text x="63.28571428571429" y="174.67346938775512" fill="#ff5555" font-size="12">M·n (yanlış)</text>
+
+      <line x1="67.55102040816327" y1="220.0" x2="49.183673469387756" y2="40.0" stroke="#55ff88" stroke-width="2" data-from='[40.0,137.3469387755102]' data-to='[49.183673469387756,40.0]' />
+<text x="53.183673469387756" y="36.0" fill="#55ff88" font-size="12">(M^-1)^T·n</text>
+
+    </svg>
+  </div>
+</div>
+
+  </div>
+  <script>
+    (function () {
+      const duration = 2000;
+      const polygons = Array.from(document.querySelectorAll("polygon[id^='poly-']"));
+      const animLines = Array.from(document.querySelectorAll("line[data-from][data-to]"));
+
+      const datasets = polygons.map((poly) => {
+        const from = JSON.parse(poly.getAttribute("data-from"));
+        const to = JSON.parse(poly.getAttribute("data-to"));
+        const svg = poly.closest("svg");
+        const circles = Array.from(svg.querySelectorAll(".vertex"));
+        return { poly, from, to, circles };
+      });
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function render(now) {
+        const t = ((now / duration) % 1);
+        const ease = 0.5 - 0.5 * Math.cos(2 * Math.PI * t);
+
+        datasets.forEach(({ poly, from, to, circles }) => {
+          const pts = from.map((p, idx) => [
+            lerp(p[0], to[idx][0], ease),
+            lerp(p[1], to[idx][1], ease)
+          ]);
+          poly.setAttribute("points", pts.map((p) => p.join(",")).join(" "));
+          circles.forEach((c, idx) => {
+            c.setAttribute("cx", pts[idx][0]);
+            c.setAttribute("cy", pts[idx][1]);
+          });
+        });
+
+        animLines.forEach((line) => {
+          const from = JSON.parse(line.getAttribute("data-from"));
+          const to = JSON.parse(line.getAttribute("data-to"));
+          const x = lerp(from[0], to[0], ease);
+          const y = lerp(from[1], to[1], ease);
+          line.setAttribute("x2", x);
+          line.setAttribute("y2", y);
+        });
+
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>
